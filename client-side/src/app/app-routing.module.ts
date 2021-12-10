@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:'dashboard', component:ListCategoriesComponent,  canActivate : [AuthGuard]},
   {path:'add_category', component:AddCategoryComponent, canActivate : [AuthGuard]},
-  {path:'update-category', component:UpdateCategoryComponent, canActivate : [AuthGuard]}
+  {path:'update-category/:id', component:UpdateCategoryComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({

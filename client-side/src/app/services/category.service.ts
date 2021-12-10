@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { category } from '../models/category';
-import { product } from '../models/product';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CategoryService {
   url = environment.api_url;
   constructor(private http : HttpClient) { }
-  addProduct(data:category) {
+
+  addCategory(data:category) {
     return new Promise(resolve => {
-      this.http.post(this.url + 'product/addProduct', data).subscribe((res: any) => {
+      this.http.post(this.url + 'category/addCategory', data).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
@@ -19,9 +19,9 @@ export class ProductService {
     });
   }
 
-  getProductById(id:number) {
+  getCategoryById(id:number) {
     return new Promise(resolve => {
-      this.http.get(this.url+ 'product/productById/' + id).subscribe((res: any) => {
+      this.http.get(this.url+ 'category/categoryById/' + id).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
@@ -29,9 +29,9 @@ export class ProductService {
     });
   }
  
-  getProducts() {
+  getCategories() {
     return new Promise(resolve => {
-      this.http.get(this.url + 'product/allProducts').subscribe((res: any) => {
+      this.http.get(this.url + 'category/allCategories').subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
@@ -39,9 +39,9 @@ export class ProductService {
     });
   }
 
-  updateProduct(data:category,id:any) {
+  updateCategory(data:category,id:any) {
     return new Promise(resolve => {
-      this.http.put(this.url + 'prouct/updateProduct/'+id, data).subscribe((res: any) => {
+      this.http.put(this.url + 'category/updateCategory/'+id, data).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
@@ -49,9 +49,9 @@ export class ProductService {
     });
   }
 
-  deleteProduct(id:number) {
+  deleteCategories(id:number) {
     return new Promise(resolve => {
-      this.http.get(this.url + 'product/deleteProduct/'+id).subscribe((res: any) => {
+      this.http.get(this.url + 'deleteCategory/'+id).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });

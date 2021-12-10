@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 
 export class JwtInterceptor implements HttpInterceptor {
-    private _URLPattern = environment.api_url + '/api';
+    private _URLPattern = environment.api_url;
     constructor(private auth: AuthentificationService
         ) { 
          
@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
         intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
           console.log('intercepted', req);
            if(req.url.startsWith(this._URLPattern)){
-            let token:any = JSON.parse(localStorage.getItem('currentUser')!).token;
+            let token:any = JSON.parse(localStorage.getItem('token')!).token;
             setTimeout(() => {
               console.log("token === ",token);
             }, 3500);

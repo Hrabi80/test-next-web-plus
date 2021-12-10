@@ -9,12 +9,12 @@ import { map } from 'rxjs/operators';
 export class AuthentificationService {
   public token!: string;
   private loggedInStatus = false;
-  private _url = environment.api_url ;
+  private _url = environment.url ;
   constructor(private _http:HttpClient) { }
 
   login(username: string, password: string): Observable<boolean> {
     
-    return this._http.post(this._url+'/login_check', {username: username, password: password} )
+    return this._http.post(this._url+'login_check', {username: username, password: password} )
     .pipe(map((response: any) =>  {
         // login successful if there's a jwt token in the response
         this.token = response.token;
