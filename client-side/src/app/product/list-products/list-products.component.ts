@@ -4,6 +4,7 @@ import { category } from '../../models/category';
 import swal from 'sweetalert2';
 import { ProductService } from 'src/app/services/product.service';
 import { product } from 'src/app/models/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-products',
@@ -12,13 +13,16 @@ import { product } from 'src/app/models/product';
 })
 export class ListProductsComponent implements OnInit {
   productlist : Array<product>=[];
-  constructor(private serv : ProductService) { }
+  id:any;
+  constructor(private serv : ProductService,
+              private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id'); 
     this.getlistProduct();
   }
   getlistProduct(){
-    this.serv.getProducts().then((res:any)=>{
+    this.serv.getProdcutByCategory(this.id).then((res:any)=>{
       console.log("res",res.data);
       this.productlist = res.data;
     })

@@ -32,6 +32,7 @@
                 <p>{{output.description}}</p>
                 <button class="btn btn-common btn-effect" style="background-color: #0B7CFF;" routerLink="/update-category/{{output.id}}">update</button>
                 <button class="btn btn-common btn-effect" style="background-color: #dfc63b;" routerLink="/list-products/{{output.id}}">Browse products</button>
+                <button class="btn btn-common btn-danger" (click)="delete(output.id)">Remove</button>
               </div>
               
             </div>

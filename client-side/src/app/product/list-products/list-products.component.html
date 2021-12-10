@@ -12,6 +12,8 @@
                 <h4>{{output.name}}</h4>
                 <p>{{output.description}}</p>
                 <button class="btn btn-common btn-effect" style="background-color: #0B7CFF;" routerLink="/update-product/{{output.id}}">update</button>
+                <button class="btn btn-common btn-danger" (click)="delete(output.id)">Remove</button>
+
               </div>
             </div>
           </div>
@@ -30,6 +32,8 @@
                 <h4>{{output.name}}</h4>
                 <p>{{output.description}}</p>
                 <button class="btn btn-common btn-effect" style="background-color: #0B7CFF;" routerLink="/update-product/{{output.id}}">update</button>
+                <button class="btn btn-common btn-danger" (click)="delete(output.id)">Remove</button>
+
               </div>
               
             </div>

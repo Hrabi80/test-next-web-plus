@@ -41,6 +41,14 @@ class ProductController extends AbstractController
   }
 
   /**
+   * @Route("/productByCategory/{id}")
+   */
+  public function getProductByCategory($id){
+      $em = $this->getDoctrine()->getManager();
+      $info = $em->getRepository('App:Product')->findByCategory($id);
+       return new JsonResponse($info);
+  }
+  /**
    * @Route("/productById/{id}")
    */
   public function getProductById($id){

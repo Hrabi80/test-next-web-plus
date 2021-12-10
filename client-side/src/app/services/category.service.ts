@@ -51,7 +51,7 @@ export class CategoryService {
 
   deleteCategories(id:number) {
     return new Promise(resolve => {
-      this.http.get(this.url + 'deleteCategory/'+id).subscribe((res: any) => {
+      this.http.get(this.url + 'category/deleteCategory/'+id).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
