@@ -23,7 +23,8 @@ class ProductController extends AbstractController
       $product->setName($data["name"]);
       $product->setDescription($data["description"]);
       $product->setPrice($data['price']);
-      $categoryId= $data['category']
+      $categoryId= $data['category'];
+      $em = $this->getDoctrine()->getManager();
       $category = $em->getRepository('App:Category')->find($categoryId);
       $product->setCategory($category);
       $em = $this->getDoctrine()->getManager();
@@ -44,12 +45,14 @@ class ProductController extends AbstractController
   }
 
   /**
-   * @Route("/productByCategory/{id}")
+   * @Route("/productsByCategory/{id}")
    */
   public function getProductByCategory($id){
       $em = $this->getDoctrine()->getManager();
-      $info = $em->getRepository('App:Product')->findByCategory($id);
-       return new JsonResponse($info);
+      //$info = $em->getRepository('App:Product')->findByCategory($id);
+      $products = $em->getRepository('App:Product')
+            ->findOneByCategory($id);
+       return new JsonResponse($products);
   }
   /**
    * @Route("/productById/{id}")

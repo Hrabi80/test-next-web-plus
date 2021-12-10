@@ -30,7 +30,7 @@ class Category implements \JsonSerializable
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category",cascade={"persist", "remove"},orphanRemoval=true)
      */
     private $products;
 

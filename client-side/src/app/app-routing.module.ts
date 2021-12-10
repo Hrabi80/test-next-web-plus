@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:'add_category', component:AddCategoryComponent, canActivate : [AuthGuard]},
   {path:'update-category/:id', component:UpdateCategoryComponent, canActivate : [AuthGuard]},
   {path:'list-products/:id', component:ListProductsComponent,  canActivate : [AuthGuard]},
-  {path:'add_product', component:AddProductComponent, canActivate : [AuthGuard]},
+  {path:'add_product/:id', component:AddProductComponent, canActivate : [AuthGuard]},
   {path:'update-product/:id', component:UpdateProductComponent, canActivate : [AuthGuard]}
 ];
 

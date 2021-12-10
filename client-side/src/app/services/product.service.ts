@@ -31,7 +31,7 @@ export class ProductService {
   
   getProdcutByCategory(id:any){
     return new Promise(resolve => {
-      this.http.get(this.url + 'product/productsByCategory').subscribe((res: any) => {
+      this.http.get(this.url + 'product/productsByCategory/'+id).subscribe((res: any) => {
         resolve({ status: true, data: res });
       }, (err) => {
         resolve({ status: false, error: err });
