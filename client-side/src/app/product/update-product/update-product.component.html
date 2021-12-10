@@ -1,1 +1,24 @@
-<p>update-product works!</p>
+
+<div class="container">
+
+
+    <div class="mycontainer">
+     <form [formGroup]="updateProductform">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name </label>
+            <input type="text" formControlName="name" class="form-control" placeholder="name of the category ..." [(ngModel)]="myprod.name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">description</label>
+            <input type="text" formControlName="description" class="form-control" placeholder="description ..." [(ngModel)]="myprod.description">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">description</label>
+            <input type="text" formControlName="price" class="form-control" placeholder="description ..." [(ngModel)]="myprod.price">
+        </div>
+
+       <button type="button"  (click)="update()" class="btn btn-primary submit">update</button>
+    
+    </form>
+</div>
+</div>

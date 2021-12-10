@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Product;
+use App\Entity\Category;
 /**
  * @Route("/api/product")
  */
@@ -50,9 +51,12 @@ class ProductController extends AbstractController
   public function getProductByCategory($id){
       $em = $this->getDoctrine()->getManager();
       //$info = $em->getRepository('App:Product')->findByCategory($id);
-      $products = $em->getRepository('App:Product')
-            ->findOneByCategory($id);
-       return new JsonResponse($products);
+        $RAW_QUERY = "SELECT * FROM product where product.category_id='$id'";
+        $statement = $em->getConnection()->prepare($RAW_QUERY);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+       return new JsonResponse($result);
   }
   /**
    * @Route("/productById/{id}")

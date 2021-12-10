@@ -28,29 +28,27 @@ class ProductRepository extends ServiceEntityRepository
 
      $qb
          ->select('Qr')
-         ->leftJoin('Qr.category','p')
+        // ->leftJoin('Qr.category','p')
          ->where('Qr.category ='.$id);
 
     return $qb->getQuery()->getArrayResult();
      //return $qb->getQuery()->execute();
  }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Product[] Returns an array of Product objects
+    */
+
+    public function findByCategoryField($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.category = :val')
             ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Product

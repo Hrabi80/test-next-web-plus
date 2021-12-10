@@ -23,7 +23,7 @@ export class ListProductsComponent implements OnInit {
   }
   getlistProduct(){
     this.serv.getProdcutByCategory(this.id).then((res:any)=>{
-      console.log("res",res.data);
+      console.log("res prod list",res);
       this.productlist = res.data;
     })
   }
