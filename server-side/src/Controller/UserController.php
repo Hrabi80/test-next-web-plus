@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
 /**
-* @Route("/client")
+* @Route("/user")
 */
 class UserController extends AbstractController
 {
@@ -47,7 +47,7 @@ class UserController extends AbstractController
      $encoded = $encoder->encodePassword($user, $request->get('password'));
      $user->setPassword($encoded);
      $user->setEnabled(true);
-     $user->addRole('ROLE_USER');
+     $user->addRole('ROLE_SUPER_ADMIN');
      $em = $this->getDoctrine()->getManager();
      $em->persist($user);
      $em->flush();

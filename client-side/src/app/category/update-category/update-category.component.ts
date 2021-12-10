@@ -35,8 +35,9 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   update(){
-    this.service.updateCategory(this.id,this.updateCategoryform.value)
+    this.service.updateCategory(this.updateCategoryform.value,this.id)
     .then((res:any)=>{
+      console.log("ss",this.updateCategoryform.value)
       console.log(res);
       swal.fire(
         'Updated!',

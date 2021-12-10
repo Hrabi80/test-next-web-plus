@@ -56,6 +56,7 @@ public function getPortfolioById($id){
 public function updatePortfolio(Request $request,$id){
   $data = json_decode($request->getContent(), true);
   $entityManager = $this->getDoctrine()->getManager();
+  echo "idd ===+>00".$id."name e ==>".$data['name'];
   $info = $entityManager->getRepository(Category::class)->find($id);
   $info->setName($data['name']);
   $info->setDescription($data['description']);

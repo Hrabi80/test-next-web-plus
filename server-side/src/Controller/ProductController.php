@@ -34,10 +34,10 @@ class ProductController extends AbstractController
    * @Route("/allProducts", name="allProducts")
    */
 
-  public function getAllCategories(){
+  public function getAllProducts(){
       $em = $this->getDoctrine()->getManager();
-      $categories = $em->getRepository('App:Category')->findAll();
-      return new JsonResponse($categories);
+      $prod = $em->getRepository('App:Product')->findAll();
+      return new JsonResponse($prod);
   }
 
   /**
