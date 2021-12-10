@@ -23,6 +23,9 @@ class ProductController extends AbstractController
       $product->setName($data["name"]);
       $product->setDescription($data["description"]);
       $product->setPrice($data['price']);
+      $categoryId= $data['category']
+      $category = $em->getRepository('App:Category')->find($categoryId);
+      $product->setCategory($category);
       $em = $this->getDoctrine()->getManager();
       $em->persist($product);
       $em->flush();

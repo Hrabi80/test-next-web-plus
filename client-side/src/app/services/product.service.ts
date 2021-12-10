@@ -9,7 +9,7 @@ import { product } from '../models/product';
 export class ProductService {
   url = environment.api_url;
   constructor(private http : HttpClient) { }
-  addProduct(data:category) {
+  addProduct(data:product) {
     return new Promise(resolve => {
       this.http.post(this.url + 'product/addProduct', data).subscribe((res: any) => {
         resolve({ status: true, data: res });
